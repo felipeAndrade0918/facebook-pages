@@ -1,4 +1,4 @@
-package com.batutapps.facebooklogin.controller;
+package com.batutapps.facebookpages.controller;
 
 import java.io.IOException;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.batutapps.facebooklogin.service.FacebookOauthService;
+import com.batutapps.facebookpages.service.FacebookOauthService;
 
 import facebook4j.Facebook;
 

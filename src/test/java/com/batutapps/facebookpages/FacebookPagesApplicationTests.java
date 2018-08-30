@@ -1,4 +1,4 @@
-package com.batutapps.facebooklogin;
+package com.batutapps.facebookpages;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class FacebookLoginApplicationTests {
+public class FacebookPagesApplicationTests {
 
 	@Test
 	public void contextLoads() {

@@ -1,4 +1,4 @@
-package com.batutapps.facebooklogin.service;
+package com.batutapps.facebookpages.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

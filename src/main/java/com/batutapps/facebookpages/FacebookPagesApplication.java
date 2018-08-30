@@ -1,12 +1,12 @@
-package com.batutapps.facebooklogin;
+package com.batutapps.facebookpages;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FacebookLoginApplication {
+public class FacebookPagesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FacebookLoginApplication.class, args);
+		SpringApplication.run(FacebookPagesApplication.class, args);
 	}
 }
