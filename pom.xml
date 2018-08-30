@@ -5,12 +5,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.batutapps</groupId>
-	<artifactId>facebooklogin</artifactId>
+	<artifactId>facebookpages</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>facebooklogin</name>
-	<description>A simple Facebook login using Facebook4j.</description>
+	<name>facebookpages</name>
+	<description>A simple project using Facebook4j to retrieve user's pages.</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
