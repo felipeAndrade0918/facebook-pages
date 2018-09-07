@@ -1,6 +1,7 @@
 package com.batutapps.facebookpages.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +34,7 @@ public class FacebookOauthController {
 		request.getSession().setAttribute("facebook", facebook);
 		
 		String callbackUrl = oauthService.getCallbackUrl(request.getRequestURL().toString());
-		response.sendRedirect(facebook.getOAuthAuthorizationURL(callbackUrl.toString()));
+		response.sendRedirect(facebook.getOAuthAuthorizationURL(callbackUrl));
 	}
 	
 	@RequestMapping("/callback")
@@ -46,12 +47,12 @@ public class FacebookOauthController {
         response.sendRedirect(request.getContextPath() + "/");
 	}
 	
-	@RequestMapping("/me")
+	@RequestMapping("/pages")
 	@ResponseBody
-	public String me(HttpServletRequest request, HttpServletResponse response) {
+	public List<String> getPages(HttpServletRequest request, HttpServletResponse response) {
 		Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
 
-		return oauthService.getUserName(facebook);
+		return oauthService.getPages(facebook);
 	}
 	
 }

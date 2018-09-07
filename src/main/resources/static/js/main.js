@@ -3,7 +3,15 @@ function welcome() {
 	request.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			if (this.responseText) {
-				document.getElementById('welcome').innerHTML = 'Hello there, ' +  this.responseText + '!';
+				var pages = JSON.parse(this.responseText),
+					pageList = document.getElementById('pages');
+				
+				for (var i = 0; i < pages.length; i++) {
+					var pageItem = document.createElement('li');
+					pageItem.innerHTML = pages[i];
+					
+					pageList.appendChild(pageItem);
+				}
 				document.getElementById('loginButton').classList.add('hidden');
 			} else {
 				document.getElementById('loginButton').classList.remove('hidden');
@@ -11,6 +19,6 @@ function welcome() {
 		}
 	};
 	
-	request.open('GET', 'oauth/me', true);
+	request.open('GET', 'oauth/pages', true);
 	request.send();
 }
