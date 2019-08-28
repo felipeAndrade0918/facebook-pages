@@ -20,6 +20,7 @@ import facebook4j.Facebook;
 @RequestMapping("/oauth")
 public class FacebookOauthController {
 
+	private static final String FACEBOOK_PARAM = "facebook";
 	private FacebookOauthService oauthService;
 	
 	@Autowired
@@ -32,7 +33,7 @@ public class FacebookOauthController {
 	public void signin(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		Facebook facebook = oauthService.setupFacebookClient();
 		
-		request.getSession().setAttribute("facebook", facebook);
+		request.getSession().setAttribute(FACEBOOK_PARAM, facebook);
 		
 		String callbackUrl = oauthService.getCallbackUrl(request.getRequestURL().toString());
 		response.sendRedirect(facebook.getOAuthAuthorizationURL(callbackUrl));
@@ -40,7 +41,7 @@ public class FacebookOauthController {
 	
 	@GetMapping("/callback")
 	public void callback(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
+		Facebook facebook = (Facebook) request.getSession().getAttribute(FACEBOOK_PARAM);
         String oauthCode = request.getParameter("code");
         
         oauthService.setAccessToken(facebook, oauthCode);
@@ -51,7 +52,7 @@ public class FacebookOauthController {
 	@GetMapping("/pages")
 	@ResponseBody
 	public List<String> getPages(HttpServletRequest request, HttpServletResponse response) {
-		Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
+		Facebook facebook = (Facebook) request.getSession().getAttribute(FACEBOOK_PARAM);
 
 		return oauthService.getPages(facebook);
 	}
