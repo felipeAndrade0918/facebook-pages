@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,7 +28,7 @@ public class FacebookOauthController {
 		this.oauthService = oauthService;
 	}
 
-	@RequestMapping("/signin")
+	@GetMapping("/signin")
 	public void signin(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		Facebook facebook = oauthService.setupFacebookClient();
 		
@@ -37,7 +38,7 @@ public class FacebookOauthController {
 		response.sendRedirect(facebook.getOAuthAuthorizationURL(callbackUrl));
 	}
 	
-	@RequestMapping("/callback")
+	@GetMapping("/callback")
 	public void callback(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
         String oauthCode = request.getParameter("code");
@@ -47,7 +48,7 @@ public class FacebookOauthController {
         response.sendRedirect(request.getContextPath() + "/");
 	}
 	
-	@RequestMapping("/pages")
+	@GetMapping("/pages")
 	@ResponseBody
 	public List<String> getPages(HttpServletRequest request, HttpServletResponse response) {
 		Facebook facebook = (Facebook) request.getSession().getAttribute("facebook");
